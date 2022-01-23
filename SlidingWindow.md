@@ -1,5 +1,4 @@
 # Sliding Window
-------------
 Given 
 Data structure - An array or a string or any sequence.
 Find
