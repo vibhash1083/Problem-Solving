@@ -6,17 +6,11 @@ Find
     ii) A window among candidate solutions with further constraints
 
 ## Observations
-i) Only linear unidirectional movement is required. So, array or string remains primary data structure of the problem.
-ii) Auxialiary data struture needs to be determined for finding candidate solutions as well as the unique window among candidates if asked for.
+1. Only linear unidirectional movement is required. So, array or string remains primary data structure of the problem.
+2. Auxialiary data struture needs to be determined for finding candidate solutions as well as the unique window among candidates if asked for.
 
 ## Sample Problem
 https://leetcode.com/problems/minimum-window-substring/
-
-Given two strings s and t of lengths m and n respectively, return the minimum window substring of s such that every character in t (including duplicates) is included in the window. If there is no such substring, return the empty string "".
-
-The testcases will be generated such that the answer is unique.
-
-A substring is a contiguous sequence of characters within the string.
 
 Given two strings s and t of lengths m and n respectively, return the minimum window substring of s such that every character in t (including duplicates) is included in the window. If there is no such substring, return the empty string "".
 
@@ -30,16 +24,6 @@ Input: s = "ADOBECODEBANC", t = "ABC"
 Output: "BANC"
 Explanation: The minimum window substring "BANC" includes 'A', 'B', and 'C' from string t.
 Example 2:
-
-Input: s = "a", t = "a"
-Output: "a"
-Explanation: The entire string s is the minimum window.
-Example 3:
-
-Input: s = "a", t = "aa"
-Output: ""
-Explanation: Both 'a's from t must be included in the window.
-Since the largest window of s only has one 'a', return empty string.
 
 ## Approach
 Step 1: Identify that it's a sliding window problem. We need to find a substring in s which contains all characters of string t. We need to traverse string linearly and look for some windows matching the criteria.
@@ -114,6 +98,7 @@ class Solution:
         # Process and return the result
         return result
 
+
 ## Solution:
 Since the problem requires that frequency of each character in target string should be greater than equal to frequency of those characters in window, we start by calculating the frequency of target first.
 
@@ -142,6 +127,25 @@ def minWindow(s, t):
     return s[start:end]
 
 ## Test Cases
+1. Invalid input, empty strings.
+2. Length of target > length of source.
+3. Sources with one window containing elements in order. Window can be at any position in source.
+4. Window containing elements not in order.
+5. Window with elements not in order and extra characters.
+6. Window requiring multiple occurences of same character i.e. target containing duplicate characters.
+7. Multiple candidate windows. For ex - out of 3 windows, 2nd one can be smaller than other two.
+8. Substring of target appearing just before or after the window.
+    For ex - s = "ABABXCNOPAYP", t = "ABC"
+    Substring of t, "AB" appears as prefix of window "ABXC".
+9. Source with multiple ups and downs across multiple windows.
+    For ex - Window 1 - length 6
+            Window 2 - length 4
+            Window 3 - length 5
+            Window 4 - length 3
+10. Large strings
+
+## Time and Space complexity
+
 
     
 
