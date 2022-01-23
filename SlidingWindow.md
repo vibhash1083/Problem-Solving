@@ -1,13 +1,8 @@
 # Sliding Window
-Given 
-Data structure - An array or a string or any sequence.
+Given a data structure - an array or a string or any sequence.
 Find
 1. A list of windows from the array matching certain criteria - candidate solutions
 2. A window among candidate solutions with further constraints
-
-## Observations
-1. Only linear unidirectional movement is required. So, array or string remains primary data structure of the problem.
-2. Auxiliary data struture needs to be determined for finding candidate solutions as well as the unique window among candidates if asked for.
 
 ## Sample Problem
 https://leetcode.com/problems/minimum-window-substring/
@@ -28,6 +23,8 @@ Example 2:
 ## Approach
 ### Step 1 - Indentification
 We need to find a substring in s which contains all characters of string t. We need to traverse string linearly and look for some windows matching the criteria. If we start with a window of size k, then next window can be formed by adding the elements on right and discarding the elements from left. While we traverse through the array, window will slide across it.
+
+Only linear unidirectional movement is required. So, array or string remains primary data structure of the problem.
 
 ### Step 2 - Characterization
 Identify characteristics of the window:
@@ -99,7 +96,20 @@ Ex - There were 2 windows of length 3 in above example and those are our finally
 
 
 ## Solution
+### Window Characterization
 Since the problem requires that frequency of each character in target string should be greater than equal to frequency of those characters in window, we start by calculating the frequency of target first.
+
+### Auxiliary Data Structure
+We can store frequency of characters in two ways:
+1. An array with number of possible characters as it's size. Each index is related to particular character and value is frequency of the character.
+For ex - If string can consists of characters from a to e only, then frequency list of "acaacd" will be
+[3, 0, 2, 1, 0]
+2. A Hashmap/Dictionary with character as key as frequency as value.
+For ex - Frequency map of "acaacz" will be {
+    a: 3,
+    c: 2,
+    z: 1
+}
 
 Additionally the length of window can't be less than length of target. We can use this property to keep a track of how many characters we have already seen and how many are missing in the window.
 
