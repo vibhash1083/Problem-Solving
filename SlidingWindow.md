@@ -1,9 +1,9 @@
 # Sliding Window
 Given 
-    Primary Data structure - An array or a string or any sequence.
+    Data structure - An array or a string or any sequence.
 Find
-    i) A list of windows from the array matching certain criteria - candidate solutions
-    ii) A window among candidate solutions with further constraints
+    1. A list of windows from the array matching certain criteria - candidate solutions
+    2. A window among candidate solutions with further constraints
 
 ## Observations
 1. Only linear unidirectional movement is required. So, array or string remains primary data structure of the problem.
@@ -26,9 +26,11 @@ Explanation: The minimum window substring "BANC" includes 'A', 'B', and 'C' from
 Example 2:
 
 ## Approach
-Step 1: Identify that it's a sliding window problem. We need to find a substring in s which contains all characters of string t. We need to traverse string linearly and look for some windows matching the criteria.
+### Step 1 
+Identify that it's a sliding window problem. We need to find a substring in s which contains all characters of string t. We need to traverse string linearly and look for some windows matching the criteria.
 
-Step 2: Identify characteristics of the window:
+### Step 2
+Identify characteristics of the window:
 - Target string t should be smaller in length than source string s.
 - Order in which characters appear in the windows is not important.
 - Window should contain all characters of target string t.
@@ -36,7 +38,8 @@ Step 2: Identify characteristics of the window:
 - Window should contain all characters from target string which means that if target has duplicate characters then frequency of each character in t should be greater than equal to the frequency of those characters in the window.
 - Problem specific requirement - Input will contain only upper case English characters. If it's not given, then we should be ready to solve it for all types of characters.
 
-Step 2: Find possible type of candidate solutions (windows).
+### Step 3
+Find possible type of candidate solutions (windows).
 - A window substring with characters in same order as t.
     Ex - s = "ABCBECOD", t = "ABC".
     ABC appears exactly in same order in window starting at index 0 and length 3.
@@ -60,9 +63,9 @@ Step 2: Find possible type of candidate solutions (windows).
     Ex - s = "ANBCYCXZABBECODABCA", t = "ABC".
     Windows - ANBC (length 4), CXZAB (length 5), ABC (length 3), BCA (length 3)
 
-### Additional requirement of the problem:
+### Step 4
+Additional requirement of the problem:
 Find the window of minimum size matching the criteria.
-
 Ex - There were 2 windows of length 3 in above example and those are our finally desired windows.
 
 ## Template to solve the sliding window problem.
