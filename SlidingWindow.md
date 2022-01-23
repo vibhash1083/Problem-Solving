@@ -1,13 +1,14 @@
 # Sliding Window
+------------
 Given 
-    Data structure - An array or a string or any sequence.
+Data structure - An array or a string or any sequence.
 Find
-    1. A list of windows from the array matching certain criteria - candidate solutions
-    2. A window among candidate solutions with further constraints
+1. A list of windows from the array matching certain criteria - candidate solutions
+2. A window among candidate solutions with further constraints
 
 ## Observations
 1. Only linear unidirectional movement is required. So, array or string remains primary data structure of the problem.
-2. Auxialiary data struture needs to be determined for finding candidate solutions as well as the unique window among candidates if asked for.
+2. Auxiliary data struture needs to be determined for finding candidate solutions as well as the unique window among candidates if asked for.
 
 ## Sample Problem
 https://leetcode.com/problems/minimum-window-substring/
@@ -26,10 +27,10 @@ Explanation: The minimum window substring "BANC" includes 'A', 'B', and 'C' from
 Example 2:
 
 ## Approach
-### Step 1 
-Identify that it's a sliding window problem. We need to find a substring in s which contains all characters of string t. We need to traverse string linearly and look for some windows matching the criteria.
+### Step 1 - Indentification
+We need to find a substring in s which contains all characters of string t. We need to traverse string linearly and look for some windows matching the criteria. If we start with a window of size k, then next window can be formed by adding the elements on right and discarding the elements from left. While we traverse through the array, window will slide across it.
 
-### Step 2
+### Step 2 - Characterization
 Identify characteristics of the window:
 - Target string t should be smaller in length than source string s.
 - Order in which characters appear in the windows is not important.
@@ -38,7 +39,7 @@ Identify characteristics of the window:
 - Window should contain all characters from target string which means that if target has duplicate characters then frequency of each character in t should be greater than equal to the frequency of those characters in the window.
 - Problem specific requirement - Input will contain only upper case English characters. If it's not given, then we should be ready to solve it for all types of characters.
 
-### Step 3
+### Step 3 - Types of candidates
 Find possible type of candidate solutions (windows).
 - A window substring with characters in same order as t.
     Ex - s = "ABCBECOD", t = "ABC".
@@ -63,12 +64,12 @@ Find possible type of candidate solutions (windows).
     Ex - s = "ANBCYCXZABBECODABCA", t = "ABC".
     Windows - ANBC (length 4), CXZAB (length 5), ABC (length 3), BCA (length 3)
 
-### Step 4
+### Step 4 - Selection
 Additional requirement of the problem:
 Find the window of minimum size matching the criteria.
 Ex - There were 2 windows of length 3 in above example and those are our finally desired windows.
 
-## Template to solve the sliding window problem.
+## Template
 1. Define window start and window end at start of the source substring.
 2. Move the window end towards right to expand the window. Keep moving till end of source.
 3. Check the incoming element and determine if the expanded window is a candidate of not.
@@ -78,31 +79,27 @@ Ex - There were 2 windows of length 3 in above example and those are our finally
     - If not, expand the window further.
 4. Process the result and provide the answer.
 
-class Solution:
-    def isWindowACandidate(window_start, window_end):
-        # Check if window is a candidate
-        return flag
 
-    def slidingWindow(source, target):
-        # Define window start and end
-        window_start, window_end = 0, 0
+`def slidingWindow(source, target):
+    # Define window start and end
+    window_start, window_end = 0, 0
 
-        # Move window_end towards right
-        for window_end in range(len(source)):
-            incoming_element = source[window_end]
-            # Check if current window is a candidate
+    # Move window_end towards right
+    for window_end in range(len(source)):
+        incoming_element = source[window_end]
+        # Check if current window is a candidate
 
-            # Shrink the window by checking as long it's possible
-            while windowShrinkCondition:
-                # Check and process information
-                # Move window_start pointer to right
-                window_start += 1
-        
-        # Process and return the result
-        return result
+        # Shrink the window by checking as long it's possible
+        while windowShrinkCondition:
+            # Check and process information
+            # Move window_start pointer to right
+            window_start += 1
+    
+    # Process and return the result
+    return result`
 
 
-## Solution:
+## Solution
 Since the problem requires that frequency of each character in target string should be greater than equal to frequency of those characters in window, we start by calculating the frequency of target first.
 
 Additionally the length of window can't be less than length of target. We can use this property to keep a track of how many characters we have already seen and how many are missing in the window.
@@ -141,16 +138,11 @@ def minWindow(s, t):
     For ex - s = "ABABXCNOPAYP", t = "ABC"
     Substring of t, "AB" appears as prefix of window "ABXC".
 9. Source with multiple ups and downs across multiple windows.
-    For ex - Window 1 - length 6
-            Window 2 - length 4
-            Window 3 - length 5
-            Window 4 - length 3
+    For ex 
+	Window 1 - length 6
+	Window 2 - length 4
+	Window 3 - length 5
+	Window 4 - length 3
 10. Large strings
 
 ## Time and Space complexity
-
-
-    
-
-
-
