@@ -53,10 +53,10 @@ Find possible type of candidate solutions (windows).
     Window - CXAB
 
 - A string may contain multiple windows.
-    a) Candidate window at start of source string.
-    b) Candidate window somewhere in source string.
-    c) Candidate window towards end of source string.
-    d) Overlapping windows anywhere in source string
+    - Candidate window at start of source string.
+    - Candidate window somewhere in source string.
+    - Candidate window towards end of source string.
+    - Overlapping windows anywhere in source string
     Ex - s = "ANBCYCXZABBECODABCA", t = "ABC".
     Windows - ANBC (length 4), CXZAB (length 5), ABC (length 3), BCA (length 3)
 
@@ -96,7 +96,7 @@ Ex - There were 2 windows of length 3 in above example and those are our finally
 
 
 ## Solution
-### Window Characterization
+### Preprocessing
 Since the problem requires that frequency of each character in target string should be greater than equal to frequency of those characters in window, we start by calculating the frequency of target first.
 
 ### Auxiliary Data Structure
@@ -113,6 +113,7 @@ For ex - Frequency map of "acaacz" will be {
 
 Additionally the length of window can't be less than length of target. We can use this property to keep a track of how many characters we have already seen and how many are missing in the window.
 
+### Implementation
 def minWindow(s, t):
     need = collections.Counter(t)            # hash table to store char frequency
     missing = len(t)                         # total number of chars we care
